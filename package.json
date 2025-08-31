@@ -1,0 +1,40 @@
+{
+  "name": "code-analyser",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "activate-venv": "bash -lc 'source .venv/Scripts/activate'",
+    "setup-backend": "pip install uv && uv venv .venv &&  npm run activate-venv && uv pip install api/.",
+    "dev-frontend": "next dev --turbopack",
+    "dev-backend": "npm run activate-venv && dotenv run fastapi dev --root-path ./api --reload --port 8000 ./api/app.py",
+    "build": "next build --turbopack",
+    "start-frontend": "next start",
+    "start-backend": "npm run activate-venv && dotenv run uvicorn api.app:app",
+    "start": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "lint": "eslint app"
+  },
+  "dependencies": {
+    "@mantine/code-highlight": "^8.2.5",
+    "@mantine/core": "^8.2.5",
+    "@mantine/dropzone": "^8.2.5",
+    "@tabler/icons": "^3.34.1",
+    "@tabler/icons-react": "^3.34.1",
+    "dotenv": "^17.2.1",
+    "next": "15.5.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "shiki": "^3.11.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^9.2.1",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
